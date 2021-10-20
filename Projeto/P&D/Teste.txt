@@ -1,0 +1,50 @@
+daria p fazer um projeto de sustentabilidade mais levado
+a instruir a pessoa das vantagens que ela teria
+de reciclar, misturando o conceito de aplicação
+de Sustentabilidade com Educação Ambiental,
+
+
+A ideia que tive em um tema relacionado a Sustentabilidade seria foco na reciclagem,
+um cadastro da pessoa que a habilitaria a um sistema meio que gamificado, talvez,
+em que seria disponibilizado um mapa com as opções possíveis de envio de material
+a ser reciclado, e então ia considerar o quanto o usuário contribuiu
+ao meio ambiente ,
+
+
+Usuário
+Campos:
+Nível
+Pontos
+Id
+Nome
+Locais_Visitados
+Perfil
+
+Apis - Usuário:
+Criar Usuário(usarioRequestCadastroModel)
+Get_UsuariobyIdentificacao(Id)
+Get_Locais_Visitados(usuarioRequest)
+Ranking_Usuario(usuarioRequestRanking)
+Delete_Usuario(Id)
+Get_Localidade_Atual()
+Set_Casa()
+Get_Casa()
+
+Recompensas
+Campos:
+Descricao
+
+Apis - Recompensas:
+Gravar_Recompensa()
+Get_Recompensa()
+Sugerir_Recompensa()
+
+
+Empresa
+Campos:
+Id
+Razao Social
+
+
+
+
