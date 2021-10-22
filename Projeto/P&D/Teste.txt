@@ -21,7 +21,7 @@ Locais_Visitados
 Perfil
 
 Apis - Usuário:
-Criar Usuário(usarioRequestCadastroModel)
+Criar Usuário(usuarioRequestCadastroModel)
 Get_UsuariobyIdentificacao(Id)
 Get_Locais_Visitados(usuarioRequest)
 Ranking_Usuario(usuarioRequestRanking)

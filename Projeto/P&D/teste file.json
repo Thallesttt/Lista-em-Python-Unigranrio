@@ -1,3 +1,40 @@
-//pegar localidades
 
-{"ids_solicitados":[1,3],"contas_associadas":["Bernardo","Renê"]}
+
+[
+    {
+        "Comentario":"Desnecessário, mas beleza, protótipo de criação de um usuário(Usuario_Criacao)",
+
+    "Usuario" : {  
+        "Id":0,  
+        "Pontos":0,  
+    "Nome":"",  
+    "email":"",  
+    "vinculo_email":["google","facebook","github"], 
+    "Locais_Visitados":{},
+    "Casa":"",
+    "Senha":""
+}
+
+},
+
+{
+    "Recompensa" : {
+
+    "Id":0,
+    "Descricao":"",
+    "Sugerido":[true,false]
+    },
+    "lvl_trancado":0
+},
+{
+    "Ranking":{
+        "Posicao":{"Usuario":{}},
+       "opcoes_pre_def":{"Top_10":[true,false]},
+        "filter":[true,false]
+    }
+}   
+]
+
+
+
+
