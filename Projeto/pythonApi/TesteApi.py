@@ -1,0 +1,3 @@
+SENHA="Time_07"
+HOSTNAME="localhost"
+SERVERPORT=8080

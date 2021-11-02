@@ -1,0 +1,20 @@
+<html>
+    <head>
+    </head>
+    <body>
+    
+        <p id="Status">Ponha aqui seu json!</p>
+        <input type = "text" id = "obj" value=""/>
+        <button onclick="fazer_json(document.getElementById('obj').value)">JSON!!</button>
+    <script>
+        
+        async function fazer_json(object)
+        {
+            var p = document.getElementById("Status");
+            var ajax = new XMLHttpRequest;
+            ajax.open("POST","localhost:8080",true);
+            ajax.send(object);
+            
+        }
+    </script></body>
+    </html>
