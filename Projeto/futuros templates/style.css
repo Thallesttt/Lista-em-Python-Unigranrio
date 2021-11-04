@@ -1,0 +1,5 @@
+.commom{display:flex;flex-direction:column;justify-content:center}
+.formulario{height:300px; width:300px; flex-direction:column; }
+.formelements{height:80px; margin:auto;}
+.sendData{width:80px ;margin-left:15%}
+#leaflet_map{height:40%}
