@@ -2,10 +2,11 @@
 <html lang="pt-br">
 
 <head>
+    <link rel="icon" type="image/svg+xml" href="./Cadastro.svg" sizes="32x32">
     <meta name=" viewport" content=" width=device-width initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css" type="text/css">
-    <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" async src="./scripts.js"></script>
     <title> Cadastro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,6 +24,7 @@
                 <div class="formElement">
                     <label for="Senha" style="display:flex;clear:both">SENHA: </label>
                     <input type="password" id="Senha" placeholder="Insira sua Senha: " />
+                    <div id="teste_senha" class="teste_senha" style="float:right; width:5px;height:20px; border-radius:10px;"></div>
                 </div>
 
                 <div class="formElement">
@@ -60,10 +62,38 @@
 
     <br>
     <script>
+
+        async function password_safety(string, checkCount = 0) {
+            try {
+                if (await check_length(string)) { checkCount++; }
+                if (await check_variety(string)) { checkCount++; }
+                var refSenha = document.getElementById("Senha");
+
+                if (string === refSenha.value) { checkCount++; }
+
+                // checkCount = await check_length(string) == true ? checkCount++ : checkcount;
+                // checkCount = await check_variety(string) == true ? checkCount++ : checkcount;
+                // checkCount = string === refSenha.value ? checkCount++ : checkCount;
+
+                if (checkCount < 3) {
+                    throw new Error("Senha não obteve todos os requisitos para ser aceita");
+                }
+                console.log(checkCount);
+
+                if (await check_database(string)) { throw new Error("Senha já existe no Banco"); };
+                console.log("Senha Aceita");
+            }
+            catch (erro) { console.log(erro.message); }
+
+        }
+
+
         function submit() {
             var registration = document.getElementById("formcadastro");
             registration.submit();
         }
+
+
         async function pesquisaEndereco(string) {
             var string = string.replace("-", "");
             var formatado = string.replace(/^(\d{5})(\d{3})*/, '$1-$2');
@@ -84,22 +114,29 @@
             http.send();
 
         }
+
+        var senha = document.getElementById("Senha");
+        senha.addEventListener("keyup", async function () {
+            var x = document.getElementById("teste_senha");
+            switch (this.value.length) {
+                case (1||2||3||4||5): x.style.backgroundColor = "#ff0b03";
+                    break;
+                case (6||7||8):
+                    x.style.backgroundColor = "#f9ea00";
+                    break;
+            }
+            if (this.value.length > 8) {
+                x.style.backgroundColor = "#4cff0e";
+            }
+        })
+        senha.addEventListener("focusout", async function () {
+            return await password_safety(this.value);
+        });
+
         var cep = document.getElementById("Cep");
 
         cep.addEventListener("change", async function () { await pesquisaEndereco(this.value) });
 
-        // registration.addEventListener("click", function (e) {
-        //     var form = document.getElementById("formcadastro");
-        //     params = submitType(form);
-
-        // });
-
-        // var registration_get = document.getElementById("cadastroget");
-        // registration_get.addEventListener("click", function (e) {
-        //     var form = document.getElementById("formget");
-        //     params = submitType(form);
-
-        // });
     </script>
 </body>
 
