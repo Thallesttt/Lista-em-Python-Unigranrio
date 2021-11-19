@@ -3,3 +3,6 @@
 .formelements{height:80px; margin:auto;}
 .sendData{width:80px ;margin-left:15%}
 #leaflet_map{height:40%}
+.formElement{clear:both; align-self:center;}
+.button{background-color:#5bd168;
+    color:#5bd168;padding:5px; border-radius:2px; cursor:pointer}

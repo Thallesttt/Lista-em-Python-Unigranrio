@@ -1,46 +1,59 @@
-<!DOCTYPE html><html>
-    <head>
+<!DOCTYPE html>
+<html>
+
+<head>
     <meta name=" viewport" content=" width=device-width initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css">
     <title>Login</title>
-    <style> 
-    body{background-color:cadetblue;}
-    .whiteText{color:white;font-size:18pt;}
+    <style>
+        body {
+            background-color: cadetblue;
+        }
+
+        .whiteText {
+            color: white;
+            font-size: 18pt;
+        }
     </style>
 </head>
+
 <body>
     <div class="conteudo commom">
         <p></p>
         <span></span>
-            <form action="" method="post" id="formLogin" class="formulario" style="padding-left:35%">
-                <div class="formelements">
-                    <label for="login"class="whiteText">Digite seu Login</label>                
-                    <input type="text" autocomplete="off" id="login" name="login"placeholder="Login. 20 caracteres Max" maxlength="20"/>
-                </div>            
-                <div class="formelements">                
-                    <label for="senha" class="whiteText">Digite sua Senha</label>               
-                    <input type="password" autocomplete="off" id="senha" name="senha" placeholder="Senha. 20 caracteres Max" maxlength="20"/>
-                </div>
-                <button type="button" class="sendData">Enviar</button>
-            </form> 
-      
-        
+        <form action="" method="post" id="formLogin" class="formulario" style="padding-left:35%">
+            <div class="formelements">
+                <label for="login" class="whiteText">Digite seu Login</label>
+                <input type="text" autocomplete="off" id="login" name="login" placeholder="Login. 20 caracteres Max"
+                    maxlength="20" />
+            </div>
+            <div class="formelements">
+                <label for="senha" class="whiteText">Digite sua Senha</label>
+                <input type="password" autocomplete="off" id="senha" name="senha" placeholder="Senha. 20 caracteres Max"
+                    maxlength="20" />
+            </div>
+            <button type="button" class="sendData">Enviar</button>
+        </form>
+
+
     </div>
     <script>
         var el = document.querySelector(".sendData");
 
-        el.addEventListener("click",function(){
-           var form = document.getElementById("formLogin");
-        
-           form.action = searchpage();
+        el.addEventListener("click", function () {
+            var form = document.getElementById("formLogin");
+
+            form.action = searchpage();
         });
-        function searchpage(){
-            
-            var url=window.location.href.toString();
-            var position=url.search("Mapa");
-            newUrl = url.replaceAt(position,"Index");
+        function searchpage() {
+
+            var url = window.location.href.toString();
+            var position = url.search("Mapa");
+            newUrl = url.replaceAt(position, "Index");
             return newUrl;
         }
-    
+
     </script>
-</body></html>
+</body>
+
+</html>
