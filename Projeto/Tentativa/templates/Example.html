@@ -1,0 +1,69 @@
+<!Doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta name=" viewport" content=" width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <script src="./scripts.js"></script>
+    <title> Cadastro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+    <form action="" method="POST" id="formcadastro" class="POST">
+        <fieldset>POST
+            <br>
+            <label for="Nome">NOME: </label>
+            <input type="text" id="Nome" />
+            <label for="Senha">SENHA: </label>
+            <input type="text" id="Senha" />
+            <label for="Cep">CEP: </label>
+            <input type="text" id="Cep" />
+            <label for="Endereço">ENDERECO: </label>
+            <input type="text" id="Endereço" />
+            <label for="Bairro">BAIRRO: </label>
+            <input type="text" id="Bairro" />
+            <label for="Estado">ESTADO: </label>
+            <input type="text" id="Estado" />
+        </fieldset>
+    </form>
+    <form action="" method="GET" id="formget" class="GET">
+        <fieldset>GET
+            <br>
+            <label for="Nome">NOME: </label>
+            <input type="text" id="Nome" />
+            <label for="Senha">SENHA: </label>
+            <input type="text" id="Senha" />
+            <label for="Cep">CEP: </label>
+            <input type="text" id="Cep" />
+            <label for="Endereço">ENDERECO: </label>
+            <input type="text" id="Endereço" />
+            <label for="Bairro">BAIRRO: </label>
+            <input type="text" id="Bairro" />
+            <label for="Estado">ESTADO: </label>
+            <input type="text" id="Estado" />
+        </fieldset>
+    </form>
+    <button type="button" id="cadastroget" onclick="">Get</button>
+    <button type="button" id="cadastro" onclick="">Post</button>
+
+    <button type="button" id="cadastro" onclick="">Cadastrar</button>
+    <button type="button" onclick="">Voltar</button>
+    <script>
+
+        var registration = document.getElementById("cadastro");
+        registration.addEventListener("click", function (e) {
+            var form = document.getElementById("formcadastro");
+            params = submitType(form);
+
+        });
+
+        var registration_get = document.getElementById("cadastroget");
+        registration_get.addEventListener("click", function (e) {
+            var form = document.getElementById("formget");
+            params = submitType(form);
+
+        });
+    </script>
+</body>
+
+</html>
