@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask.templating import render_template
 import sqlite3
 # from asyncio import tasks
@@ -14,7 +14,15 @@ def index():
 @app.route("/Cadastro")
 def cadastro():
      return render_template("cadastro.html")
-    
+
+
+@app.route("/Cadastro", methods=["POST"])
+def cadastro():
+     userName = request.form["Nome"]
+     userCep = request.form["Cep"]
+     userEstado=request.form["Estado"]
+     user
+     return render_template("cadastro.html")
 
 @app.route("/bank")
 def Bank():

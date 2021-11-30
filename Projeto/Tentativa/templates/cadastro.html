@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="./Cadastro.svg" sizes="32x32">
     <meta name=" viewport" content=" width=device-width initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for(static,filename=css/style.css) }}">
+    <link rel="stylesheet" href="">
     <script type="text/javascript" async src="./scripts.js"></script>
     <title> Cadastro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,31 +29,31 @@
 
                 <div class="formElement">
                     <label for="Nome" style="display:flex;clear:both">NOME: </label>
-                    <input type="text" id="Nome" class="cadastroInput" placeholder="Insira Seu Nome Completo: " />
+                    <input type="text" id="Nome" name="Nome"class="cadastroInput" placeholder="Insira Seu Nome Completo: " />
                 </div>
 
                 <div class="formElement">
                     <label for="Senha" style="display:flex;clear:both">SENHA: </label>
-                    <input type="password" id="Senha" class="cadastroInput" placeholder="Insira sua Senha: " />
+                    <input type="password" id="Senha" name="Senha" class="cadastroInput" placeholder="Insira sua Senha: " />
                     <div id="teste_senha" class="teste_senha"
                         style="float:right; width:5px;height:20px; border-radius:10px;"></div>
                 </div>
 
                 <div class="formElement">
                     <label for="Cep" style="display:flex;clear:both">CEP: </label>
-                    <input type="text" id="Cep" class="cadastroInput" maxlength="8" placeholder="Insira seu CEP: " />
+                    <input type="text" id="Cep" name="Cep" class="cadastroInput" maxlength="8" placeholder="Insira seu CEP: " />
                 </div>
                 <div class="formElement">
                     <label for="Endereço" style="display:flex;clear:both">ENDERECO: </label>
-                    <input type="text" id="Endereco" class="cadastroInput" placeholder="Insira seu Endereço: " />
+                    <input type="text" id="Endereco" name="Endereco" class="cadastroInput" placeholder="Insira seu Endereço: " />
                 </div>
                 <div class="formElement">
                     <label for="Bairro" style="display:flex;clear:both">BAIRRO: </label>
-                    <input type="text" id="Bairro" class="cadastroInput" placeholder="Insira eu Bairro: " />
+                    <input type="text" id="Bairro" name="Bairro" class="cadastroInput" placeholder="Insira eu Bairro: " />
                 </div>
                 <div class="formElement">
                     <label for="Estado" style="display:flex;clear:both">ESTADO: </label>
-                    <input type="text" id="Estado" class="cadastroInput" placeholder="Insira seu Estado: " />
+                    <input type="text" id="Estado" name="Estado" class="cadastroInput" placeholder="Insira seu Estado: " />
                 </div>
             </fieldset>
         </form>
@@ -111,7 +111,7 @@
                 obj.Estado = registration[x].value; x++;
             }
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", `http://127.0.0.1:8000/Usuario.json`, true);
+            xhr.open("GET", `'http://localhost:5000/Cadastro'`, true);
             xhr.responseType = "text";
             xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4 && xhr.status == 200) {
