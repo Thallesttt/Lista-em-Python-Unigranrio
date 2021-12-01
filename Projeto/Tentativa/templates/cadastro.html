@@ -55,15 +55,15 @@
                     <label for="Estado" style="display:flex;clear:both">ESTADO: </label>
                     <input type="text" id="Estado" name="Estado" class="cadastroInput" placeholder="Insira seu Estado: " />
                 </div>
+                <div style="padding-top:25px"></div>
+                <div style="display:flex; justify-content:center;align-items:center;">
+                    
+                    <button type="submit" class="button" style="cursor:pointer" id="cadastro" value="submit">Cadastre-se</a>
+                </div>
             </fieldset>
         </form>
         <br>
 
-    </div>
-    <div style="padding-top:25px"></div>
-    <div style="display:flex; justify-content:center;align-items:center;">
-
-        <button type="button" class="button" style="cursor:pointer" id="cadastro" onclick="submit()">Cadastre-se</a>
     </div>
     <br>
     <div style="padding-top:20px"></div>
@@ -99,30 +99,30 @@
 
         }
 
-        function submit() {
-            obj = { Nome: "", Senha: "", Cep: "", Estado: "", Endereco: "", Bairro: "" };
-            var registration = document.getElementById("formcadastro");
-            for (var x = 1; x < registration.length; x++) {
-                obj.Nome = registration[x].value; x++;
-                obj.Senha = registration[x].value; x++;
-                obj.Cep = registration[x].value; x++;
-                obj.Endereco = registration[x].value; x++;
-                obj.Bairro = registration[x].value; x++;
-                obj.Estado = registration[x].value; x++;
-            }
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", `'http://localhost:5000/Cadastro'`, true);
-            xhr.responseType = "text";
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var array_obj = JSON.parse(xhr.response);
-                    array_obj.push(obj);
-                    arrray_obj = JSON.stringify(array_obj);
-                    console.log(array_obj);
-                }
-            }
-            xhr.send();
-        }
+    //    function submit() {
+    //        obj = { Nome: "", Senha: "", Cep: "", Estado: "", Endereco: "", Bairro: "" };
+    //        var registration = document.getElementById("formcadastro");
+    //        for (var x = 1; x < registration.length; x++) {
+    //            obj.Nome = registration[x].value; x++;
+    //            obj.Senha = registration[x].value; x++;
+    //            obj.Cep = registration[x].value; x++;
+    //            obj.Endereco = registration[x].value; x++;
+    //            obj.Bairro = registration[x].value; x++;
+    //            obj.Estado = registration[x].value; x++;
+    //        }
+    //        var xhr = new XMLHttpRequest();
+    //        xhr.open("POST", `'localhost:5000/Cadastro'`, true);
+    //        xhr.responseType = "text";
+    //        xhr.onreadystatechange = () => {
+    //            if (xhr.readyState == 4 && xhr.status == 200) {
+    //                var array_obj = JSON.parse(xhr.response);
+    //                array_obj.push(obj);
+    //                arrray_obj = JSON.stringify(array_obj);
+    //                console.log(array_obj);
+    //            }
+    //        }
+    //        xhr.send();
+    //    }
 
         async function pesquisaEndereco(string) {
             var string = string.replace("-", "");

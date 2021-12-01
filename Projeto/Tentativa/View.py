@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request,redirect,url_for
 from flask.templating import render_template
 import sqlite3
 # from asyncio import tasks
@@ -9,20 +9,27 @@ app= Flask(__name__)
 def index():
     return render_template("index.html")
 
-
-
 @app.route("/Cadastro")
 def cadastro():
-     return render_template("cadastro.html")
-
+        return render_template("cadastro.html")
 
 @app.route("/Cadastro", methods=["POST"])
-def cadastro():
-     userName = request.form["Nome"]
-     userCep = request.form["Cep"]
-     userEstado=request.form["Estado"]
-     user
-     return render_template("cadastro.html")
+def cadastro_Post():
+    if request.method == "POST":
+        userName = request.form["Nome"]
+        userSenha = request.form["Senha"]
+        userBairro = request.form["Bairro"]
+        userEndereco = request.form["Endereco"]
+        userCep = request.form["Cep"]
+        userEstado = request.form["Estado"]
+        Values = f"'{userName}','{userSenha}','{userCep}','{userEndereco}','{userBairro}','{userEstado}'"
+        connection = get_db_connection()
+        insert = connection.execute(f"INSERT INTO TB_USUARIO (NOME,SENHA,CEP,ENDERECO,BAIRRO,ESTADO) VALUES({Values})")
+        connection.commit()
+        connection.close()
+
+    return render_template('Login.html')
+     
 
 @app.route("/bank")
 def Bank():
