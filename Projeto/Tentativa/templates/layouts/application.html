@@ -1,0 +1,175 @@
+<!Doctype html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" type="image/svg+xml" href="./Cadastro.svg" sizes="32x32">
+    <meta name=" viewport" content=" width=device-width initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css }}">
+    <script type="text/javascript" async src="./scripts.js"></script>
+    <title> Cadastro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+</head>
+
+<body style="height:100%; width:100%">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div style="align-items: center;">
+        <ul class="navigationBar">
+            <li class="navigationΒarΙtem "><a class="whiteText" href="Index.html">Home</a></li>
+            <li class="navigationΒarΙtem "><a class="whiteText" href="Login.html">Login</a></li>
+            <li class="navigationΒarΙtem "><a class="whiteText" href="Tutorial.html">Tutorial</a></li>
+            <li class="navigationΒarΙtem ativo"><a class="whiteText" href="Cadastro.html">Cadastro</a></li>
+            <li class="navigationΒarΙtem"><a class="whiteText" href="Mapa.html">Mapa</a></li>
+        </ul>
+    </div>
+
+    {% block conteudo %}
+    {% endblock %}
+
+    <br>
+    <script>
+
+        async function password_safety(string, checkCount = 0) {
+            try {
+                if (await check_length(string)) { checkCount++; }
+                if (await check_variety(string)) { checkCount++; }
+                var refSenha = document.getElementById("Senha");
+
+                if (string === refSenha.value) { checkCount++; }
+
+                // checkCount = await check_length(string) == true ? checkCount++ : checkcount;
+                // checkCount = await check_variety(string) == true ? checkCount++ : checkcount;
+                // checkCount = string === refSenha.value ? checkCount++ : checkCount;
+
+                if (checkCount < 3) {
+                    throw new Error("Senha não obteve todos os requisitos para ser aceita");
+                }
+                console.log(checkCount);
+
+                if (await check_database(string)) { throw new Error("Senha já existe no Banco"); };
+                console.log("Senha Aceita");
+            }
+            catch (erro) { console.log(erro.message); }
+
+        }
+
+        function submit() {
+            obj = { Nome: "", Senha: "", Cep: "", Estado: "", Endereco: "", Bairro: "" };
+            var registration = document.getElementById("formcadastro");
+            for (var x = 1; x < registration.length; x++) {
+                obj.Nome = registration[x].value; x++;
+                obj.Senha = registration[x].value; x++;
+                obj.Cep = registration[x].value; x++;
+                obj.Endereco = registration[x].value; x++;
+                obj.Bairro = registration[x].value; x++;
+                obj.Estado = registration[x].value; x++;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", `http://127.0.0.1:8000/Usuario.json`, true);
+            xhr.responseType = "text";
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var array_obj = JSON.parse(xhr.response);
+                    array_obj.push(obj);
+                    arrray_obj = JSON.stringify(array_obj);
+                    console.log(array_obj);
+                }
+            }
+            xhr.send();
+        }
+
+        async function pesquisaEndereco(string) {
+            var string = string.replace("-", "");
+            var formatado = string.replace(/^(\d{5})(\d{3})*/, '$1-$2');
+            cep.value = formatado;
+            url = `https://viacep.com.br/ws/${string}/json/`;
+            var http = new XMLHttpRequest();
+            http.open("GET", url, true, "0");
+            http.onreadystatechange = () => {
+
+                if (http.readyState == 4 && http.status == 200) {
+                    // console.log(http.responseText);
+                    var objEndereco = JSON.parse(http.responseText);
+                    document.getElementById("Endereco").value = objEndereco.logradouro;
+                    document.getElementById("Bairro").value = objEndereco.bairro;
+                    document.getElementById("Estado").value = objEndereco.uf;
+                }
+            };
+            http.send();
+
+        }
+
+        var senha = document.getElementById("Senha");
+        senha.addEventListener("keyup", async function () {
+            var x = document.getElementById("teste_senha");
+            switch (this.value.length) {
+                case (1 || 2 || 3 || 4 || 5): x.style.backgroundColor = "#ff0b03";
+                    break;
+                case (6 || 7 || 8):
+                    x.style.backgroundColor = "#f9ea00";
+                    break;
+            }
+            if (this.value.length > 8) {
+                x.style.backgroundColor = "#4cff0e";
+            }
+        })
+        senha.addEventListener("focusout", async function () {
+            return await password_safety(this.value);
+        });
+
+        var cep = document.getElementById("Cep");
+
+        cep.addEventListener("change", async function () { await pesquisaEndereco(this.value) });
+
+    </script>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
