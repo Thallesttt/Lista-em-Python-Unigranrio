@@ -42,7 +42,7 @@
                 <input type="password" autocomplete="off" id="senha" name="senha" placeholder="Senha. 20 caracteres Max"
                     maxlength="20" />
             </div>
-            <button type="button" class="sendData">Enviar</button>
+            <button type="submit" class="sendData">Enviar</button>
         </form>
 
 
@@ -50,19 +50,19 @@
     <script>
         var el = document.querySelector(".sendData");
 
-        el.addEventListener("click", function () {
-            var form = document.getElementById("formLogin");
-
-            form.action = searchpage();
-        });
-        function searchpage() {
-
-            var url = window.location.href.toString();
-            var position = url.search("Mapa");
-            newUrl = url.replaceAt(position, "Index");
-            return newUrl;
-        }
-
+     //   el.addEventListener("click", function () {
+     //       var form = document.getElementById("formLogin");
+//
+     //       form.action = searchpage();
+     //   });
+     //   function searchpage() {
+//
+     //       var url = window.location.href.toString();
+     //       var position = url.search("Mapa");
+     //       newUrl = url.replaceAt(position, "Index");
+     //       return newUrl;
+     //   }
+//
     </script>
 </body>
 

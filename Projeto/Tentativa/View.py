@@ -5,11 +5,36 @@ import sqlite3
 
 app= Flask(__name__)
 
+#Index
 @app.route("/")  
 def index():
+    
     return render_template("index.html")
 
-@app.route("/Cadastro")
+@app.route("/<db_results>")  
+def show_index_results(db_results):
+    
+    return render_template("index.html",db_results)
+
+#Login
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/login",methods=["POST"])
+def try_login():
+    
+    user = request.form["login"]
+    senha = request.form["senha"]
+    conn = get_db_connection()
+    sql,sqlfrom,sqlwhere = "SELECT A.NOME, A.SENHA " +"\r\n", "FROM TB_USUARIO A " + "\r\n", f"WHERE A.NOME = '{user}' AND A.SENHA = '{senha}'"
+    results = conn.execute(f"{sql}{sqlfrom}{sqlwhere}"+"\r\n"+" ORDER BY A.ID").fetchall()
+    if len(results) > 0:
+        return render_template(".login.html", db_results = results)
+    return "error"
+
+#Cadastro
+@app.route("/cadastro")
 def cadastro():
         return render_template("cadastro.html")
 
@@ -28,7 +53,7 @@ def cadastro_Post():
         connection.commit()
         connection.close()
 
-    return render_template('Login.html')
+    return render_template('login.html')
      
 
 @app.route("/bank")
@@ -47,3 +72,7 @@ def get_db_connection():
 @app.route("/sad",methods=["GET","POST"])
 def sad():
     return "OK"
+
+@app.route("/error")
+def error():
+    return "error"
