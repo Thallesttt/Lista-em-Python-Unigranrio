@@ -7,7 +7,7 @@ app= Flask(__name__)
 
 @app.route("/")  
 def index():
-    return render_template("index.html")
+    return render_template("posts.html")
 
 @app.route("/Cadastro")
 def cadastro():
@@ -47,3 +47,28 @@ def get_db_connection():
 @app.route("/sad",methods=["GET","POST"])
 def sad():
     return "OK"
+
+@app.route("/posts")
+def posts():
+    return render_template("posts.html")
+
+@app.route("/post/1")
+def post1():
+    return render_template("post1.html")
+
+@app.route("/quizz/1")
+def quizz1():
+    return render_template("quizz1.html")
+
+@app.route("/quizz/2")
+def quizz2():
+    return render_template("quizz2.html")
+
+@app.route("/quizz/3")
+def quizz3():
+    return render_template("quizz3.html")
+
+@app.route("/quizz/parabens")
+def quizz_parabens():
+    return render_template("quizz_parabens.html")
+

@@ -1,0 +1,23 @@
+{% extends 'layouts/application.html' %}
+
+{% block conteudo %}
+<div class="card shadow-sm bg-white rounded" style="margin-top: 20px;">
+    <div class="card-body">
+        <p class="lead">
+            <i class="material-icons">favorite</i>
+            <i class="material-icons">favorite</i>
+            <i class="material-icons">favorite</i>
+        </p>
+
+        <h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+            <span>
+                É melhor optar por utensílios descartáveis para economizar a água da lavagem? 
+            </span>
+        </h4>
+
+        <a href="/quizz/2" class="btn btn-success mt-2" value="sim">Sim</a>
+        <a href="/quizz/2" class="btn btn-success mt-2" value="sim">Não</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'layouts/application.html' %}
+
+{% block conteudo %}
+<div class="card shadow-sm bg-white rounded" style="margin-top: 20px;">
+    <div class="card-body">
+        <p class="lead">
+            <i class="material-icons">favorite</i>
+            <i class="material-icons">favorite</i>
+            <i class="material-icons">favorite</i>
+        </p>
+
+        <h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+            <span>
+               Qual opção NÃO representa um dos Objetivos do Desenvolvimento Sustentável?
+            </span>
+        </h4>
+
+        <a href="/quizz/3" class="btn btn-success mt-2" value="errado">Energia acessível e poluente</a>
+        <a href="/quizz/3" class="btn btn-success mt-2" value="certo">Igualdade de gênero</a>
+        <a href="/quizz/3" class="btn btn-success mt-2" value="sim">Conservação da vida marinha</a>
+    </div>
+</div>
+
+{% endblock %}
