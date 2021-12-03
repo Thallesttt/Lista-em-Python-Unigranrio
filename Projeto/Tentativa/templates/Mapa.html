@@ -1,34 +1,24 @@
-<!DOCTYPE html>
-<html>
+{% extends 'layouts/application.html' %}
 
-<head>
-    <link rel="icon" type="image/svg+xml" href="./Icone_Mapa.svg" sizes="32x32">
-    <meta name=" viewport" content=" width=device-width initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-    <title>Mapa</title>
-
-</head>
-
+{% block conteudo %}
 <body>
-    <div style="align-items: center;">
-        <ul class="navigationBar">
-            <li class="navigationΒarΙtem "><a class="whiteText" href="Index.html">Home</a></li>
-            <li class="navigationΒarΙtem "><a class="whiteText" href="Login.html">Login</a></li>
-            <li class="navigationΒarΙtem "><a class="whiteText" href="Tutorial.html">Tutorial</a></li>
-            <li class="navigationΒarΙtem"><a class="whiteText" href="Cadastro.html">Cadastro</a></li>
-            <li class="navigationΒarΙtem ativo"><a class="whiteText" href="Mapa.html">Mapa</a></li>
-        </ul>
 
-    </div>
-    <div id="map" style="height:540px"></div>
+    <!--<div style="align-items: center;">                                                                      -->
+    <!--    <ul class="navigationBar">-->
+    <!--        <li class="navigationΒarΙtem "><a class="whiteText" href="Index.html">Home</a></li>-->
+    <!--        <li class="navigationΒarΙtem "><a class="whiteText" href="Login.html">Login</a></li>-->
+    <!--        <li class="navigationΒarΙtem "><a class="whiteText" href="Tutorial.html">Tutorial</a></li>-->
+    <!--        <li class="navigationΒarΙtem"><a class="whiteText" href="Cadastro.html">Cadastro</a></li>-->
+    <!--        <li class="navigationΒarΙtem ativo"><a class="whiteText" href="Mapa.html">Mapa</a></li>-->
+    <!--    </ul>-->
+<!---->
+    <!--</div>-->
+    <div id="map" style="height:40px"></div>
     <p></p>
     <span></span>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
     <script>
         var map = L.map('map').setView([51.505, -0.09], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -46,5 +36,6 @@
         var marker = L.marker([-22.710910, -43.332682]).addTo(map);
     </script>
 </body>
+{% endblock %}
 
-</html>
+

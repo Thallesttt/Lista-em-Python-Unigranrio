@@ -1,44 +1,30 @@
-<!DOCTYPE html>
-<html>
+{% extends 'layouts/application.html' %}
 
-<head>
-    <meta name=" viewport" content=" width=device-width initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <title>Login</title>
-    <style>
-        body {
-            background-color: cadetblue;
-        }
+{% block conteudo %}
 
-        .whiteText {
-            color: white;
-            font-size: 18pt;
-        }
-    </style>
-</head>
 
-<body>
-    <div style="align-items: center;">
-        <ul class="navigationBar">
-            <li class="navigationΒarΙtem "><a class="whiteText" href="Index.html">Home</a></li>
-            <li class="navigationΒarΙtem ativo"><a class="whiteText" href="Login.html">Login</a></li>
-            <li class="navigationΒarΙtem "><a class="whiteText" href="Tutorial.html">Tutorial</a></li>
-            <li class="navigationΒarΙtem"><a class="whiteText" href="Cadastro.html">Cadastro</a></li>
-            <li class="navigationΒarΙtem"><a class="whiteText" href="Mapa.html">Mapa</a></li>
-        </ul>
-
-    </div>
+<body class="bg-success">
+    <!--<div style="align-items: center;">                                                                  -->
+    <!--    <ul class="navigationBar">-->
+    <!--        <li class="navigationΒarΙtem "><a class="whiteText" href="Index.html">Home</a></li>-->
+    <!--        <li class="navigationΒarΙtem ativo"><a class="whiteText" href="Login.html">Login</a></li>-->
+    <!--        <li class="navigationΒarΙtem "><a class="whiteText" href="Tutorial.html">Tutorial</a></li>-->
+    <!--        <li class="navigationΒarΙtem"><a class="whiteText" href="Cadastro.html">Cadastro</a></li>-->
+    <!--        <li class="navigationΒarΙtem"><a class="whiteText" href="Mapa.html">Mapa</a></li>-->
+    <!--    </ul>-->
+<!---->
+    <!--</div>-->
     <div class="conteudo commom">
         <p></p>
         <span></span>
         <form action="" method="post" id="formLogin" class="formulario" style="padding-left:35%">
             <div class="formelements">
-                <label for="login" class="whiteText">Digite seu Login</label>
+                <label for="login" class="text-white"><b>Digite seu Login</b></label>
                 <input type="text" autocomplete="off" id="login" name="login" placeholder="Login. 20 caracteres Max"
                     maxlength="20" />
             </div>
             <div class="formelements">
-                <label for="senha" class="whiteText">Digite sua Senha</label>
+                <label for="senha" class="text-white"><b>Digite sua Senha</b></label>
                 <input type="password" autocomplete="off" id="senha" name="senha" placeholder="Senha. 20 caracteres Max"
                     maxlength="20" />
             </div>
@@ -65,5 +51,7 @@
 //
     </script>
 </body>
+{% endblock %}
+
 
 </html>

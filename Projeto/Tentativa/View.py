@@ -10,10 +10,10 @@ app= Flask(__name__)
 def index():
     return render_template("posts.html")
     
-@app.route("/<db_results>")  
-def show_index_results(db_results):
-    
-    return render_template("index.html",db_results)
+#@app.route("/<db_results>")  
+#def show_index_results(db_results):
+#    
+#    return render_template("index.html",db_results)
 
 #Login
 @app.route("/login")
@@ -71,6 +71,10 @@ def get_db_connection():
 @app.route("/sad",methods=["GET","POST"])
 def sad():
     return "OK"
+
+@app.route("/mapa")
+def mapa():
+    return render_template("mapa.html")
 
 @app.route("/posts")
 def posts():
