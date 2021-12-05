@@ -1,6 +1,18 @@
 {% extends 'layouts/application.html' %}
 
 {% block conteudo %}
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+</head>
+
 <body>
 
     <!--<div style="align-items: center;">                                                                      -->
@@ -11,14 +23,10 @@
     <!--        <li class="navigationΒarΙtem"><a class="whiteText" href="Cadastro.html">Cadastro</a></li>-->
     <!--        <li class="navigationΒarΙtem ativo"><a class="whiteText" href="Mapa.html">Mapa</a></li>-->
     <!--    </ul>-->
-<!---->
+    <!---->
     <!--</div>-->
-    <div id="map" style="height:40px"></div>
-    <p></p>
-    <span></span>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+    <div id="map" style="height: 180px;"></div>
+
     <script>
         var map = L.map('map').setView([51.505, -0.09], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -37,5 +45,3 @@
     </script>
 </body>
 {% endblock %}
-
-
