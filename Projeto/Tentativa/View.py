@@ -37,7 +37,7 @@ def try_login():
 def cadastro():
         return render_template("cadastro.html")
 
-@app.route("/Cadastro", methods=["POST"])
+@app.route("/cadastro", methods=["POST"])
 def cadastro_Post():
     if request.method == "POST":
         userName = request.form["Nome"]
